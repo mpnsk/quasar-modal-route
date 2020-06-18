@@ -9,7 +9,7 @@ const routes = [
     children: [
       { path: '', component: () => import('pages/Index.vue') }
       ,
-      { path: 'erw', component: EmptyRouterView, name: 'route', children: [
+      { path: 'erw', component: EmptyRouterView, name: 'dialog', children: [
           {
             name: 'route.child-one',
             path: 'child-one',
@@ -18,7 +18,7 @@ const routes = [
           ,
           {
             name: 'nested.dialog',
-            path: 'dialog',
+            path: 'dialog/:userId',
             components: {
               // default: EssentialLink,
               dialog: MyDialog
@@ -41,6 +41,7 @@ const routes = [
   //     component: MyRouteView
   //   }]
   // }
+
 ]
 
 // Always leave this as last one

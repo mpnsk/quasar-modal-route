@@ -91,7 +91,7 @@
         console.log(arg)
         console.log(this.$router.currentRoute);
         console.log(this.$router.previousRoute);
-        this.$router.push('/erw');
+        this.$router.replace('/erw');
         // this.$router.
       }
     },
