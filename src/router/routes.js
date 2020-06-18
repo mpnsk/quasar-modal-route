@@ -1,12 +1,46 @@
-
+import EmptyRouterView from "components/EmptyRouterView";
+import ChildOneView from "components/ChildOneView";
+import MyDialog from "components/MyDialog";
+import EssentialLink from "components/EssentialLink";
 const routes = [
   {
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/Index.vue') }
+      ,
+      { path: 'erw', component: EmptyRouterView, name: 'route', children: [
+          {
+            name: 'route.child-one',
+            path: 'child-one',
+            component: ChildOneView
+          }
+          ,
+          {
+            name: 'nested.dialog',
+            path: 'dialog',
+            components: {
+              // default: EssentialLink,
+              dialog: MyDialog
+            }
+          }
+        ]}
+      // {
+      //   name: 'route.child-two',
+      //   path: 'child-two',
+      //   component: ChildTwoView
+      // }
     ]
-  }
+  },
+  // {
+  //   path: '/my-route',
+  //   component: EmptyRouterView,
+  //   children: [{
+  //     name: 'route',
+  //     path: '',
+  //     component: MyRouteView
+  //   }]
+  // }
 ]
 
 // Always leave this as last one
