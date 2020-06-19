@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 import routes from './routes'
+import {routeNames} from './routes'
 
 Vue.use(VueRouter)
 
@@ -13,14 +14,13 @@ Vue.use(VueRouter)
  * async/await or return a Promise which resolves
  * with the Router instance.
  */
-
 export default function (/* { store, ssrContext } */) {
   const Router = new VueRouter({
     scrollBehavior: (to, from, savedPosition) => {
-      if (to.name === "users.dialog" &&
-        from.name === "users") return false
-      if (to.name === "users" &&
-        from.name === "users.dialog") return false
+      if (to.name === routeNames.user.dialog &&
+        from.name === routeNames.users) return false
+      if (to.name === routeNames.users &&
+        from.name === routeNames.user.dialog) return false
       return ({x: 0, y: 0})
     },
     routes,

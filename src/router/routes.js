@@ -2,22 +2,30 @@ import EmptyRouterView from "components/EmptyRouterView";
 import ChildOneView from "components/ChildOneView";
 import MyDialog from "components/MyDialog";
 import EssentialLink from "components/EssentialLink";
+let  names = {
+  index: 'index',
+  users: 'users',
+  user: {
+    child: 'user.child-one',
+    dialog: 'user.dialog'
+  }
+}
 const routes = [
   {
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { name: 'index', path: 'index', component: () => import('pages/Index.vue') }
+      { name: names.index, path: 'index', component: () => import('pages/Index.vue') }
       ,
-      { name: 'users', path: '', component: EmptyRouterView, children: [
+      { name: names.users, path: '', component: EmptyRouterView, children: [
           {
-            name: 'users.child-one',
+            name: names.user.child,
             path: 'child-one',
             component: ChildOneView
           }
           ,
           {
-            name: 'users.dialog',
+            name: names.user.dialog,
             path: 'dialog/:userId',
             components: {
               // default: EssentialLink,
@@ -53,3 +61,4 @@ if (process.env.MODE !== 'ssr') {
 }
 
 export default routes
+export const routeNames = names

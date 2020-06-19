@@ -6,8 +6,8 @@
     <ul id="example-1">
 
       <li v-for="person in people" :key="person.id">
-        <router-link :to="{name:'users.dialog', params: {userId: 1}}">
-        {{ person.name }}, {{person.age}} - {{person.email}}
+        <router-link :to="{name: routeNames.user.dialog, params: {userId: 1}}">
+          {{ person.name }}, {{person.age}} - {{person.email}}
         </router-link>
       </li>
     </ul>
@@ -15,6 +15,7 @@
 </template>
 
 <script>
+  import {routeNames} from 'src/router/routes';
   const faker = require('faker/locale/de');
   let people = []
   for (let i = 0; i < 100; i++) {
@@ -29,7 +30,8 @@
     // name: 'ComponentName',
     data() {
       return {
-        people: people
+        people: people,
+        routeNames: routeNames
       }
     },
     methods: {
