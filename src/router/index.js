@@ -17,10 +17,10 @@ Vue.use(VueRouter)
 export default function (/* { store, ssrContext } */) {
   const Router = new VueRouter({
     scrollBehavior: (to, from, savedPosition) => {
-      if (to.name === "nested.dialog" &&
-        from.name === "dialog") return false
-      if (to.name === "dialog" &&
-        from.name === "nested.dialog") return false
+      if (to.name === "users.dialog" &&
+        from.name === "users") return false
+      if (to.name === "users" &&
+        from.name === "users.dialog") return false
       return ({x: 0, y: 0})
     },
     routes,

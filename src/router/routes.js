@@ -7,17 +7,17 @@ const routes = [
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: 'index', component: () => import('pages/Index.vue') }
+      { name: 'index', path: 'index', component: () => import('pages/Index.vue') }
       ,
-      { path: '', component: EmptyRouterView, name: 'dialog', children: [
+      { name: 'users', path: '', component: EmptyRouterView, children: [
           {
-            name: 'route.child-one',
+            name: 'users.child-one',
             path: 'child-one',
             component: ChildOneView
           }
           ,
           {
-            name: 'nested.dialog',
+            name: 'users.dialog',
             path: 'dialog/:userId',
             components: {
               // default: EssentialLink,

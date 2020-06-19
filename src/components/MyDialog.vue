@@ -91,7 +91,7 @@
         console.log(arg)
         console.log(this.$router.currentRoute);
         console.log(this.$router.previousRoute);
-        this.$router.replace({name: "dialog"});
+        this.$router.replace({name: 'users'});
         // this.$router.
       }
     },

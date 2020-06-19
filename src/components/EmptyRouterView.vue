@@ -6,7 +6,7 @@
     <ul id="example-1">
 
       <li v-for="person in people" :key="person.id">
-        <router-link :to="{name:'nested.dialog', params: {userId: 1}}">
+        <router-link :to="{name:'users.dialog', params: {userId: 1}}">
         {{ person.name }}, {{person.age}} - {{person.email}}
         </router-link>
       </li>
