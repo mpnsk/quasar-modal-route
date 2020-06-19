@@ -26,10 +26,7 @@ const routes = [
           {
             name: names.user.dialog,
             path: 'dialog/:userId',
-            components: {
-              // default: EssentialLink,
-              dialog: MyDialog
-            }
+            component: MyDialog
           }
         ]}
     ]

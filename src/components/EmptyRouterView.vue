@@ -1,8 +1,6 @@
 <template>
   <div>ERW
-    <router-view></router-view>
-    <router-view name="dialog" @show="logSomething"></router-view>
-    <router-link to="/erw/dialog">Go to Bar</router-link>
+<!--    <router-view></router-view>-->
     <ul id="example-1">
       <li v-for="person in people" :key="person.id">
         <router-link :to="{name: routeNames.user.dialog, params: {userId: person.id}}">
@@ -10,6 +8,7 @@
         </router-link>
       </li>
     </ul>
+    <router-view />
   </div>
 </template>
 
@@ -35,7 +34,7 @@
     },
     methods: {
       logSomething() {
-        console.log("parent triggered")
+        console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
       }
     }
   }
