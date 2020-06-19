@@ -4,9 +4,8 @@
     <router-view name="dialog" @show="logSomething"></router-view>
     <router-link to="/erw/dialog">Go to Bar</router-link>
     <ul id="example-1">
-
       <li v-for="person in people" :key="person.id">
-        <router-link :to="{name: routeNames.user.dialog, params: {userId: 1}}">
+        <router-link :to="{name: routeNames.user.dialog, params: {userId: person.id}}">
           {{ person.name }}, {{person.age}} - {{person.email}}
         </router-link>
       </li>

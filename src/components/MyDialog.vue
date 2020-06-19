@@ -13,6 +13,7 @@
 
         <q-card-section class="q-pt-none">
           Click/Tap on the backdrop.
+          id: {{ $route.params.userId }}
         </q-card-section>
 
         <q-card-actions align="right" class="bg-white text-teal">
@@ -74,9 +75,10 @@
     // name: 'ComponentName',
     data() {
       return {
-        fullWidth: false,
+        fullWidth: true,
         fullHeight: false,
-        full: true
+        full: false,
+        id: this.$route.params.id
       }
     },
     methods: {
