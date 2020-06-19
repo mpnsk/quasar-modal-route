@@ -1,5 +1,5 @@
 <template>
-  <div>ERW
+  <div>Root view
 <!--    <router-view></router-view>-->
     <ul id="example-1">
       <li v-for="person in people" :key="person.id">

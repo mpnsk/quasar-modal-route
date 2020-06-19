@@ -1,4 +1,4 @@
-import EmptyRouterView from "components/EmptyRouterView";
+import RootView from "components/RootView";
 import ChildOneView from "components/ChildOneView";
 import MyDialog from "components/MyDialog";
 let  names = {
@@ -16,7 +16,7 @@ const routes = [
     children: [
       { name: names.index, path: 'index', component: () => import('pages/Index.vue') }
       ,
-      { name: names.users, path: '', component: EmptyRouterView, children: [
+      { name: names.users, path: '', component: RootView, children: [
           {
             name: names.user.child,
             path: 'child-one',
