@@ -1,7 +1,6 @@
 import EmptyRouterView from "components/EmptyRouterView";
 import ChildOneView from "components/ChildOneView";
 import MyDialog from "components/MyDialog";
-import EssentialLink from "components/EssentialLink";
 let  names = {
   index: 'index',
   users: 'users',
@@ -33,22 +32,8 @@ const routes = [
             }
           }
         ]}
-      // {
-      //   name: 'route.child-two',
-      //   path: 'child-two',
-      //   component: ChildTwoView
-      // }
     ]
   },
-  // {
-  //   path: '/my-route',
-  //   component: EmptyRouterView,
-  //   children: [{
-  //     name: 'route',
-  //     path: '',
-  //     component: MyRouteView
-  //   }]
-  // }
 
 ]
 

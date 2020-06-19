@@ -1,13 +1,10 @@
 <template>
-  <div>My component
-    <q-btn label="Full Width" color="primary" @click="fullWidth = true"/>
-    <q-btn label="Full Height" color="primary" @click="fullHeight = true"/>
-
+  <div>
     <q-dialog
       v-model="fullWidth"
       full-width
-      @show="doSomething"
-      @hide="doSomethingElse"
+      @show="atShow"
+      @hide="atHide"
     >
       <q-card>
         <q-card-section>
@@ -27,6 +24,8 @@
     <q-dialog
       v-model="fullHeight"
       full-height
+      @show="atShow"
+      @hide="atHide"
     >
       <q-card class="column full-height" style="width: 300px">
         <q-card-section>
@@ -47,7 +46,9 @@
     <q-dialog
       v-model="full"
       full-height
-    full-width
+      full-width
+      @show="atShow"
+      @hide="atHide"
     >
       <q-card class="column full-height" style="width: 300px">
         <q-card-section>
@@ -68,31 +69,24 @@
 </template>
 
 <script>
+  import {routeNames} from "src/router/routes";
   export default {
     // name: 'ComponentName',
     data() {
       return {
-        // small: false,
-        // medium: false,
-        fullWidth: true,
+        fullWidth: false,
         fullHeight: false,
-        full: false
+        full: true
       }
     },
     methods: {
-      close() {
-        // this.$router.back()
+      atShow() {
+        console.log("showing")
       },
-      doSomething() {
-        console.log("something")
-      },
-      doSomethingElse(arg) {
-        console.log("something else" + arg )
+      atHide(arg) {
+        console.log("hiding" + arg )
         console.log(arg)
-        console.log(this.$router.currentRoute);
-        console.log(this.$router.previousRoute);
-        this.$router.replace({name: 'users'});
-        // this.$router.
+        this.$router.replace({name: routeNames.users});
       }
     },
     beforeRouteEnter (to, from, next) {
