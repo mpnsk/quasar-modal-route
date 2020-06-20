@@ -4,7 +4,7 @@
     <ul id="example-1">
       <li v-for="person in people" :key="person.id">
         <router-link :to="{name: routeNames.user.dialog, params: {userId: person.id}}">
-          {{ person.name }}, {{person.age}} - {{person.email}}
+          {{ person.name }}, {{person.age}} - {{person.email}} | {{deferList}}
         </router-link>
       </li>
     </ul>
@@ -29,13 +29,34 @@
     data() {
       return {
         people: people,
-        routeNames: routeNames
+        routeNames: routeNames,
+        deferList: false
       }
     },
     methods: {
       logSomething() {
         console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
       }
+    },
+    beforeRouteEnter (to, from, next) {
+      if (to.name === routeNames.user.dialog &&
+        from.name === null){
+        console.log('let\'s not render this.')
+        next(vm => vm.deferList = true)
+      }
+      next()
+    },
+    beforeRouteUpdate (to, from, next) {
+      if (to.name === routeNames.users &&
+        from.name === routeNames.user.dialog &&
+        this.deferList === true){
+        console.log('now is the time to render')
+        this.deferList = false
+      }
+      next()
+    },
+    beforeRouteLeave (to, from, next) {
+      next()
     }
   }
 </script>
