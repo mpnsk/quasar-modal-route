@@ -1,104 +1,59 @@
 <template>
   <div>
-    <q-dialog
-      v-model="fullWidth"
-      full-width
-      @show="atShow"
-      @hide="atHide"
-    >
+    <q-dialog v-model="fullWidth" full-width @hide="atHide" @before-show="atShow">
       <q-card>
         <q-card-section>
-          <div class="text-h6">Full Width</div>
+          <div class="text-h6">#{{id + 1}} - {{spiel.name}}</div>
         </q-card-section>
 
         <q-card-section class="q-pt-none">
-          Click/Tap on the backdrop.
-          id: {{ $route.params.userId }}
+          <ul>
+            <li>{{spiel.beschreibung}}</li>
+            <li>{{spiel.dauer}}</li>
+            <li>{{spiel.mindestAlter}}</li>
+            <li>{{spiel.spielerAnzahl}}</li>
+          </ul>
         </q-card-section>
 
         <q-card-actions align="right" class="bg-white text-teal">
-          <q-btn flat label="OK" v-close-popup/>
+          <q-btn flat label="OK" v-close-popup />
         </q-card-actions>
       </q-card>
     </q-dialog>
-
-    <q-dialog
-      v-model="fullHeight"
-      full-height
-      @show="atShow"
-      @hide="atHide"
-    >
-      <q-card class="column full-height" style="width: 300px">
-        <q-card-section>
-          <div class="text-h6">Full Height</div>
-        </q-card-section>
-
-        <q-card-section class="col q-pt-none">
-          Click/Tap on the backdrop.
-        </q-card-section>
-
-        <q-card-actions align="right" class="bg-white text-teal">
-          <q-btn flat label="OK" v-close-popup/>
-        </q-card-actions>
-      </q-card>
-    </q-dialog>
-
-
-    <q-dialog
-      v-model="full"
-      full-height
-      full-width
-      @show="atShow"
-      @hide="atHide"
-    >
-      <q-card class="column full-height" style="width: 300px">
-        <q-card-section>
-          <div class="text-h6">Full Height</div>
-        </q-card-section>
-
-        <q-card-section class="col q-pt-none">
-          Click/Tap on the backdrop.
-        </q-card-section>
-
-        <q-card-actions align="right" class="bg-white text-teal">
-          <q-btn flat label="OK" v-close-popup/>
-        </q-card-actions>
-      </q-card>
-    </q-dialog>
-
   </div>
 </template>
 
 <script>
-  import {routeNames} from "src/router/routes";
-  export default {
-    // name: 'ComponentName',
-    data() {
-      return {
-        fullWidth: true,
-        fullHeight: false,
-        full: false,
-        id: this.$route.params.id
-      }
+import spiele from "src/out.json";
+import { routeNames } from "src/router/routes";
+export default {
+  // name: 'ComponentName',
+  data() {
+    return {
+      fullWidth: true,
+      fullHeight: false,
+      full: false,
+      id: this.$route.params.userId,
+      spiel: spiele[this.$route.params.userId]
+    };
+  },
+  methods: {
+    atShow(showObj) {
     },
-    methods: {
-      atShow() {
-        console.log("showing")
-      },
-      atHide(arg) {
-        console.log("hiding" + arg )
-        console.log(arg)
-        this.$router.replace({name: routeNames.users});
-      }
-    },
-    beforeRouteEnter (to, from, next) {
-      next()
-    },
-    beforeRouteUpdate (to, from, next) {
-      next()
-    },
-    beforeRouteLeave (to, from, next) {
-      next()
+    atHide(arg) {
+      console.log("hiding" + arg);
+      console.log(arg);
+      this.$router.replace({ name: routeNames.users });
     }
+  },
+  beforeRouteEnter(to, from, next) {
+    next();
+  },
+  beforeRouteUpdate(to, from, next) {
+    next();
+  },
+  beforeRouteLeave(to, from, next) {
+    next();
   }
+};
 </script>

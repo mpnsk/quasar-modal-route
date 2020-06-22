@@ -17,11 +17,10 @@ Vue.use(VueRouter)
 export default function (/* { store, ssrContext } */) {
   const Router = new VueRouter({
     scrollBehavior: (to, from, savedPosition) => {
-      if (to.name === routeNames.user.dialog &&
-        from.name === routeNames.users) return false
+      if(to.name === routeNames.user.dialog) return false
       if (to.name === routeNames.users &&
-        from.name === routeNames.user.dialog) return false
-      return ({x: 0, y: 0})
+        from.name === routeNames.user.dialog) return {selector: '#' + from.params.userId, offset: {x: 0, y: 50}}
+      return false
     },
     routes,
 
